@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irving Vending - AI-Powered Vending & Micro Market Solutions | Dallas-Fort Worth</title>
+    <meta name="description" content="Irving Vending provides AI-powered smart coolers, micro markets, office coffee service, and complete break room solutions serving Irving and Dallas-Fort Worth Metroplex.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div onclick="showPage('home')" class="flex items-center gap-3 cursor-pointer">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-slate-900">Irving Vending</div>
+                        <div class="text-xs text-slate-600">Smart Break Room Solutions</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <button onclick="showPage('home')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">Home</button>
+                    <button onclick="showPage('services')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">Services</button>
+                    <button onclick="showPage('technology')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">Technology</button>
+                    <button onclick="showPage('about')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">About Us</button>
+                    <button onclick="showPage('locations')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">Service Area</button>
+                    <button onclick="showPage('contact')" class="nav-link font-semibold text-slate-700 hover:text-blue-600 transition">Contact</button>
+                    <a href="tel:+14695551234" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        Call Now
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Nav -->
+            <nav id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3 border-t border-slate-200 pt-4">
+                <button onclick="showPage('home'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">Home</button>
+                <button onclick="showPage('services'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">Services</button>
+                <button onclick="showPage('technology'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">Technology</button>
+                <button onclick="showPage('about'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">About Us</button>
+                <button onclick="showPage('locations'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">Service Area</button>
+                <button onclick="showPage('contact'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 rounded-lg font-semibold text-slate-700 hover:bg-slate-50">Contact</button>
+                <a href="tel:+14695551234" class="block bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold text-center">Call Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-32 pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                            Irving's Premier Vending Solutions
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                            AI-Powered Vending for Modern Workplaces
+                        </h1>
+                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                            Transform your break room with intelligent micro markets, smart coolers, and premium coffee service. Serving Irving and the Dallas-Fort Worth Metroplex.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="showPage('contact')" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center gap-2">
+                                Get Free Quote 
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                            </button>
+                            <button onclick="showPage('services')" class="bg-white text-slate-900 px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 transition-all border-2 border-slate-200 flex items-center gap-2">
+                                Our Services 
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 shadow-2xl">
+                            <div class="bg-white rounded-xl p-6 space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                                    <span class="text-2xl font-bold text-slate-900">Smart Technology</span>
+                                </div>
+                                <div class="space-y-3 text-slate-700">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span>AI Inventory Management</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span>Contactless Payments</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span>Real-Time Analytics</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        <span>24/7 Monitoring</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="bg-white py-16 px-6 border-y border-slate-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
+                        <div class="text-slate-600 font-medium">Active Clients</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">24/7</div>
+                        <div class="text-slate-600 font-medium">Support Available</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">15+</div>
+                        <div class="text-slate-600 font-medium">Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">99.9%</div>
+                        <div class="text-slate-600 font-medium">Uptime Guarantee</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section class="py-20 px-6 bg-slate-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                        Complete Break Room Solutions
+                    </h2>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                        From AI-powered smart coolers to traditional vending, we provide everything your workplace needs.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">AI Smart Coolers</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">Cutting-edge intelligent refrigeration with automated inventory tracking and predictive restocking.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Real-time monitoring</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Energy efficient</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Smart analytics</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Micro Markets</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">Transform your break room into a 24/7 self-service convenience store with fresh food and snacks.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Fresh food daily</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Self-checkout kiosks</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Customized selections</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Office Coffee Service</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">Premium coffee solutions from bean-to-cup to single-serve, tailored to your team's preferences.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Gourmet options</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Bean-to-cup</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Full maintenance</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Water & Pantry</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">Filtered water systems, pantry services, and complete break room solutions for employee wellness.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Filtered water</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Healthy snacks</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-slate-700">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm">Custom programs</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                            Why Irving Businesses Choose Us
+                        </h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-2">Local & Reliable</h3>
+                                    <p class="text-slate-600">Family-owned business serving Irving and DFW with fast, dependable service.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-2">Advanced Technology</h3>
+                                    <p class="text-slate-600">AI-powered inventory, cashless payments, and real-time monitoring.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-2">Custom Solutions</h3>
+                                    <p class="text-slate-600">Tailored product selections based on your team's preferences and needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-slate-50 p-8 rounded-2xl">
+                        <div class="bg-white p-8 rounded-xl shadow-xl">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Client Testimonial</h3>
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            </div>
+                            <p class="text-slate-700 italic mb-4 leading-relaxed">
+                                "Irving Vending transformed our break room with their micro market. The AI technology keeps everything stocked perfectly, and our employees love the variety. Best decision we made!"
+                            </p>
+                            <div class="font-semibold text-slate-900">Sarah Mitchell</div>
+                            <div class="text-slate-600 text-sm">Facilities Manager, Tech Corp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-br from-blue-600 to-blue-700 py-20 px-6">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Ready to Upgrade Your Break Room?
+                </h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Get a free consultation and custom quote for your Irving workplace today.
+                </p>
+                <button onclick="showPage('contact')" class="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-slate-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                    Schedule Free Consultation
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="servicesPage" class="page">
+        <div class="bg-white pt-24 pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 pt-8">
+                    <h1 class="text-5xl font-bold text-slate-900 mb-4">Our Services</h1>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                        Comprehensive vending and break room solutions powered by cutting-edge technology
+                    </p>
+                </div>
+
+                <!-- Service 1 - AI Smart Coolers -->
+                <div class="mb-16 rounded-2xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                            <h2 class="text-4xl font-bold text-slate-900 mb-4">AI Smart Coolers</h2>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed">Cutting-edge intelligent refrigeration with automated inventory tracking and predictive restocking.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Real-time monitoring</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Energy efficient</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Smart analytics</span>
+                                </div>
+                            </div>
+                            <button onclick="showPage('contact')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                        <div>
+                            <div class="bg-gradient-to-br from-blue-100 to-slate-100 rounded-xl h-80 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-blue-600 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 - Micro Markets -->
+                <div class="mb-16 bg-slate-50 rounded-2xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center md:grid-flow-dense">
+                        <div class="md:col-start-2">
+                            <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            <h2 class="text-4xl font-bold text-slate-900 mb-4">Micro Markets</h2>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed">Transform your break room into a 24/7 self-service convenience store with fresh food and snacks.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Fresh food daily</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Self-checkout kiosks</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Customized selections</span>
+                                </div>
+                            </div>
+                            <button onclick="showPage('contact')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                        <div class="md:col-start-1 md:row-start-1">
+                            <div class="bg-gradient-to-br from-blue-100 to-slate-100 rounded-xl h-80 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-blue-600 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 - Office Coffee -->
+                <div class="mb-16 rounded-2xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            <h2 class="text-4xl font-bold text-slate-900 mb-4">Office Coffee Service</h2>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed">Premium coffee solutions from bean-to-cup to single-serve, tailored to your team's preferences.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Gourmet options</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Bean-to-cup</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Full maintenance</span>
+                                </div>
+                            </div>
+                            <button onclick="showPage('contact')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                        <div>
+                            <div class="bg-gradient-to-br from-blue-100 to-slate-100 rounded-xl h-80 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-blue-600 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 - Water & Pantry -->
+                <div class="mb-16 bg-slate-50 rounded-2xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center md:grid-flow-dense">
+                        <div class="md:col-start-2">
+                            <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                            <h2 class="text-4xl font-bold text-slate-900 mb-4">Water & Pantry Services</h2>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed">Filtered water systems, pantry services, and complete break room solutions for employee wellness.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Filtered water</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Healthy snacks</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span class="text-slate-700 text-lg">Custom programs</span>
+                                </div>
+                            </div>
+                            <button onclick="showPage('contact')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                        <div class="md:col-start-1 md:row-start-1">
+                            <div class="bg-gradient-to-br from-blue-100 to-slate-100 rounded-xl h-80 flex items-center justify-center">
+                                <svg class="w-32 h-32 text-blue-600 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TECHNOLOGY PAGE -->
+    <div id="technologyPage" class="page">
+        <div class="bg-white pt-24 pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 pt-8">
+                    <h1 class="text-5xl font-bold text-slate-900 mb-4">Smart Technology</h1>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                        Industry-leading AI and IoT solutions that make vending effortless
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="bg-slate-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">AI-Powered Intelligence</h3>
+                        <p class="text-slate-600 leading-relaxed">Machine learning algorithms predict inventory needs and optimize product selection based on consumption patterns.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Cashless Payments</h3>
+                        <p class="text-slate-600 leading-relaxed">Accept all payment methods including credit cards, mobile wallets, and contactless payments for seamless transactions.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Real-Time Monitoring</h3>
+                        <p class="text-slate-600 leading-relaxed">Track inventory levels, sales data, and machine performance 24/7 through our advanced management platform.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Mobile App Access</h3>
+                        <p class="text-slate-600 leading-relaxed">Convenient mobile ordering, service requests, and account management at your employees' fingertips.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-12 text-white">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <svg class="w-16 h-16 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        <h2 class="text-4xl font-bold mb-6">The Irving Vending Advantage</h2>
+                        <p class="text-xl mb-8 opacity-90 leading-relaxed">
+                            Our proprietary AI platform learns your team's preferences, predicts demand, and ensures your break room is always stocked with exactly what your employees want.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                                <div class="text-3xl font-bold mb-2">40%</div>
+                                <div class="text-sm opacity-90">Reduced Waste</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                                <div class="text-3xl font-bold mb-2">99.9%</div>
+                                <div class="text-sm opacity-90">Product Availability</div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                                <div class="text-3xl font-bold mb-2">24/7</div>
+                                <div class="text-sm opacity-90">System Monitoring</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="aboutPage" class="page">
+        <div class="bg-white pt-24 pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 pt-8">
+                    <h1 class="text-5xl font-bold text-slate-900 mb-4">About Irving Vending</h1>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                        Your trusted partner for workplace refreshments since 2009
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <h2 class="text-4xl font-bold text-slate-900 mb-6">Our Story</h2>
+                        <div class="space-y-4 text-slate-600 leading-relaxed">
+                            <p>
+                                Founded in Irving, Texas, we've been transforming workplace break rooms across the Dallas-Fort Worth Metroplex for over 15 years. What started as a traditional vending service has evolved into a technology-driven solutions provider.
+                            </p>
+                            <p>
+                                We pioneered AI-powered inventory management in our region, combining cutting-edge technology with personalized, local service. Our mission is simple: make every break room experience exceptional.
+                            </p>
+                            <p>
+                                As a family-owned business, we treat every client like family. We're not just delivering products—we're creating workplace environments where employees feel valued and energized.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-slate-50 rounded-2xl p-8">
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-6">Our Values</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-lg font-semibold text-slate-900">Innovation</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-lg font-semibold text-slate-900">Reliability</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-lg font-semibold text-slate-900">Quality</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-lg font-semibold text-slate-900">Customer Service</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Why Choose Irving Vending?</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-blue-600"
